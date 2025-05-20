@@ -1,6 +1,13 @@
 import flet as ft
+import consulta_airtable as cat
+
 
 def main (page: ft.Page):
+
+    def mostrar_interacciones(e: ft.ControlEvent):
+        page.clean()
+        cat.main(page)
+
     page.title ="Farma UJAT"
     page.theme_mode = "light"
     page.appbar = ft.AppBar(
@@ -24,7 +31,8 @@ def main (page: ft.Page):
         ),
         bgcolor="orange100",
         color="black",
-        width=200
+        width=200,
+        on_click=mostrar_interacciones
     )
     btn_altas = ft.FilledButton(
         content=ft.Container(
@@ -43,7 +51,9 @@ def main (page: ft.Page):
         ),
         bgcolor="green100",
         color="black",
-        width=200
+        width=200,
+    
+
     )
     btn_listar = ft.FilledButton(
         content=ft.Container(
